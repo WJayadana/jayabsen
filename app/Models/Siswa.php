@@ -24,13 +24,23 @@ class Siswa extends Model
         'start_date',
     ];
 
+    // public function jurusan()
+    // {
+    //     return $this->belongsTo(Jurusan::class)->withTrashed();
+    // }
+
+    // public function tingkat()
+    // {
+    //     return $this->belongsTo(Tingkat::class)->withTrashed();
+    // }
+
     public function jurusan()
     {
-        return $this->belongsTo(Jurusan::class)->withTrashed();
+        return $this->belongsTo(Jurusan::class, 'id_jurusan')->withTrashed();
     }
 
     public function tingkat()
     {
-        return $this->belongsTo(Tingkat::class)->withTrashed();
+        return $this->belongsTo(Tingkat::class, 'id_tingkat')->withTrashed();
     }
 }
