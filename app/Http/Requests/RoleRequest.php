@@ -11,7 +11,7 @@ class RoleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,14 +21,8 @@ class RoleRequest extends FormRequest
      */
     public function rules(): array
     {
-        if(request()->isMethod('PUT')) {
-            $name = 'required|unique:roles,name,'.request()->id;
-        } else {
-            $name = 'required|unique:roles,name';
-        }
-
         return [
-            'name' => $name
+            'name' => 'required'
         ];
     }
 }

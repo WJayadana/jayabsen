@@ -66,8 +66,8 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ Route::is('users*') || Route::is('roles*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ Route::is('users*') || Route::is('roles*') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
                             User
@@ -76,26 +76,18 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('roles.index') }}" class="nav-link {{ Route::is('roles*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Role & Permission</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('users.index') }}" class="nav-link {{ Route::is('users*') ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>User</p>
                             </a>
                         </li>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-file"></i>
-                        <p>
-                            Presences
-                        </p>
-                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
