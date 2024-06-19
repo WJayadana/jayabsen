@@ -7,9 +7,16 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('home') }}" class="nav-link">Home</a>
         </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Presences</a>
-        </li>
+        @canany('view absensi')
+        <li class="nav-item">
+            <a href="{{ route('absensis.index') }}" class="nav-link {{ Route::is('absensis*') ? 'active' : '' }}">
+              {{-- <i class="nav-icon fas fa-file"></i> --}}
+              <p>
+                Presences
+              </p>
+            </a>
+          </li>
+          @endcanany
     </ul>
 
     <!-- Right navbar links -->

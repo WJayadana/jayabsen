@@ -15,28 +15,28 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        Permission::create(['name' => 'view department']);
-        Permission::create(['name' => 'create department']);
-        Permission::create(['name' => 'edit department']);
-        Permission::create(['name' => 'delete department']);
+        Permission::create(['name' => 'view jurusan']);
+        Permission::create(['name' => 'create jurusan']);
+        Permission::create(['name' => 'edit jurusan']);
+        Permission::create(['name' => 'delete jurusan']);
 
-        Permission::create(['name' => 'view position']);
-        Permission::create(['name' => 'create position']);
-        Permission::create(['name' => 'edit position']);
-        Permission::create(['name' => 'delete position']);
+        Permission::create(['name' => 'view tingkat']);
+        Permission::create(['name' => 'create tingkat']);
+        Permission::create(['name' => 'edit tingkat']);
+        Permission::create(['name' => 'delete tingkat']);
 
-        Permission::create(['name' => 'view staff']);
-        Permission::create(['name' => 'create staff']);
-        Permission::create(['name' => 'edit staff']);
-        Permission::create(['name' => 'delete staff']);
+        Permission::create(['name' => 'view siswa']);
+        Permission::create(['name' => 'create siswa']);
+        Permission::create(['name' => 'edit siswa']);
+        Permission::create(['name' => 'delete siswa']);
 
         Permission::create(['name' => 'view device']);
         Permission::create(['name' => 'create device']);
         Permission::create(['name' => 'edit device']);
         Permission::create(['name' => 'delete device']);
 
-        Permission::create(['name' => 'view rfid']);
-        Permission::create(['name' => 'delete rfid']);
+        Permission::create(['name' => 'view kartu']);
+        Permission::create(['name' => 'delete kartu']);
 
         Permission::create(['name' => 'view user']);
         Permission::create(['name' => 'create user']);
@@ -51,15 +51,15 @@ class UserSeeder extends Seeder
         Permission::create(['name' => 'view setting']);
         Permission::create(['name' => 'edit setting']);
 
-        Permission::create(['name' => 'view presence']);
+        Permission::create(['name' => 'view absensi']);
 
-        Permission::create(['name' => 'view presence by date']);
-        Permission::create(['name' => 'export excel presence by date']);
-        Permission::create(['name' => 'export pdf presence by date']);
+        Permission::create(['name' => 'view absensi by date']);
+        Permission::create(['name' => 'export excel absensi by date']);
+        Permission::create(['name' => 'export pdf absensi by date']);
 
-        Permission::create(['name' => 'view presence by staff']);
-        Permission::create(['name' => 'export excel presence by staff']);
-        Permission::create(['name' => 'export pdf presence by staff']);
+        Permission::create(['name' => 'view absensi by siswa']);
+        Permission::create(['name' => 'export excel absensi by siswa']);
+        Permission::create(['name' => 'export pdf absensi by siswa']);
 
         $adminRole = Role::create(['name' => 'admin']);
         $permissions = Permission::get();
@@ -67,8 +67,8 @@ class UserSeeder extends Seeder
 
         $admin = User::create([
             'name' => 'Wahyudi Jayadana',
-            'email' => 'admin@mail.com',
-            'password' => bcrypt('12345678')
+            'email' => 'jayadana@mail.com',
+            'password' => bcrypt('password')
         ]);
 
         $admin->assignRole($adminRole);

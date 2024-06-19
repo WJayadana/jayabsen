@@ -9,6 +9,13 @@ use App\Http\Requests\JurusanRequest;
 
 class JurusanController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:view jurusan|create jurusan|edit jurusan|delete jurusan', ['only' => ['index']]);
+        $this->middleware('permission:create jurusan', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit jurusan', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete jurusan', ['only' => ['destroy']]);
+    }
     /**
      * Display a listing of the resource.
      */

@@ -6,9 +6,13 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\KartuController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\DeviceController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\JurusanController;
 use App\Http\Controllers\TingkatController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PengaturanController;
+use App\Http\Controllers\Api\ChangeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,4 +52,20 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::resource('users', UserController::class)->except('show');
     Route::get('users/ajax/datatable', [UserController::class, 'datatable'])->name('users.ajax.datatable');
+
+    Route::resource('absensis', AbsensiController::class)->only('index');
+    Route::get('absensis/ajax/datatable', [AbsensiController::class, 'datatable'])->name('absensis.ajax.datatable');
+
+    Route::get('reports/date', [ReportController::class, 'reportDate'])->name('reports.date');
+    Route::get('reports/date/ajax/datatable', [ReportController::class, 'reportDateDatatable'])->name('reports.date.ajax.datatable');
+    Route::get('reports/date/export', [ReportController::class, 'reportDateExport'])->name('reports.date.export');
+
+    Route::get('reports/siswa', [ReportController::class, 'reportSiswa'])->name('reports.siswa');
+    Route::get('reports/siswa/ajax/datatable', [ReportController::class, 'SiswaDatatable'])->name('reports.siswa.ajax.datatable');
+    Route::get('reports/siswa/{id}/absensis', [ReportController::class, 'AbsensiSiswa'])->name('reports.siswa.absensi');
+    Route::get('reports/siswa/{id}/absensis/ajax/datatable', [ReportController::class, 'absensiSiswaDatatable'])->name('reports.siswa.absensis.ajax.datatable');
+    Route::get('reports/siswa/{id}/absensis/export', [ReportController::class, 'reportSiswaExport'])->name('reports.siswa.export');
+
+    Route::resource('pengaturans', PengaturanController::class)->only(['index', 'store']);
 });
+
