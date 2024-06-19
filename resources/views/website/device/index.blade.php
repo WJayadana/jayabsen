@@ -72,43 +72,49 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#datatable').DataTable({
-            responsive : true,
-            processing : true,
-            serverSide : true,
-            ajax : {
-                url : '{!! route('devices.ajax.datatable') !!}',
-            },
-            columns : [
-                {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
-                {data: 'id', name: 'id', orderable: true, searchable: true},
-                {data: 'nama', name: 'nama', orderable: false, searchable: true},
-                {data: 'mode', name: 'mode', orderable: false, searchable: false},
-                {data: 'is_active', name: 'is_active', orderable: false, searchable: false},
-                {data: 'action', name: 'action', orderable: false, searchable: false,}
-            ]
-        });
+    var table = $('#datatable').DataTable({
+        responsive : true,
+        processing : false,
+        serverSide : true,
+        ajax : {
+            url : '{!! route('devices.ajax.datatable') !!}',
+        },
+        columns : [
+            {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+            {data: 'id', name: 'id', orderable: true, searchable: true},
+            {data: 'nama', name: 'nama', orderable: false, searchable: true},
+            {data: 'mode', name: 'mode', orderable: false, searchable: false},
+            {data: 'is_active', name: 'is_active', orderable: false, searchable: false},
+            {data: 'action', name: 'action', orderable: false, searchable: false}
+        ]
     });
 
-    function deleteConfirm(id) {
-        Swal.fire({
-            text: "Are you sure you want to delete data ?",
-            type: 'warning',
-            icon: 'info',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Delete'
-            }).then((result) => {
-            if (result.value) {
-                $('#submit_'+id).submit();
-                Swal.fire(
-                    'Deleted!',
-                    'Device data deleted',
-                    'success'
-                )
-            }
-        })
-    }
+    setInterval(function(){
+        console.log('Reloading data...'); // Add log to see if it's being called
+        table.ajax.reload(null, false); // User paging is not reset on reload
+    }, 1000); // 30000 milliseconds = 30 seconds
+});
+
+function deleteConfirm(id) {
+    Swal.fire({
+        text: "Are you sure you want to delete data ?",
+        type: 'warning',
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Delete'
+        }).then((result) => {
+        if (result.value) {
+            $('#submit_'+id).submit();
+            Swal.fire(
+                'Deleted!',
+                'Device data deleted',
+                'success'
+            )
+        }
+    })
+}
+
 </script>
 @endpush

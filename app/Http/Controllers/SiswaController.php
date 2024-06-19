@@ -27,23 +27,36 @@ class SiswaController extends Controller
     {
         $jurusans = Jurusan::where('is_active', true)->get();
         $tingkats = Tingkat::where('is_active', true)->get();
-        $kartus = Kartu::all();
+
+        // Ambil semua kode kartu yang sudah digunakan oleh siswa
+        $usedKartuCodes = Siswa::pluck('kode')->toArray();
+
+        // Ambil kartu yang tidak ada dalam daftar kode kartu yang sudah digunakan
+        $kartus = Kartu::whereNotIn('kode', $usedKartuCodes)->get();
 
         return view('website.siswa.create', compact('jurusans', 'tingkats', 'kartus'));
     }
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(SiswaRequest $request)
-    {
-        Siswa::create($request->all());
-        Kartu::where('kode', $request->kode)->delete();
+{
+    // Validasi bahwa kartu belum terhubung dengan siswa lain
+    $exists = Siswa::where('kode', $request->kode)->exists();
 
-        toastr('Siswa Berhasil Ditambah', 'success', 'Siswa', ['positionClass' => 'toast-bottom-right']);
-
-        return redirect()->route('siswa.index');
+    if ($exists) {
+        return redirect()->back()->withErrors(['kode' => 'Kartu ini sudah terhubung dengan siswa lain.'])->withInput();
     }
+
+    Siswa::create($request->all());
+
+    toastr('Siswa Berhasil Ditambah', 'success', 'Siswa', ['positionClass' => 'toast-bottom-right']);
+
+    return redirect()->route('siswa.index');
+}
+
 
     /**
      * Display the specified resource.
@@ -92,27 +105,27 @@ class SiswaController extends Controller
 
         return DataTables::of($siswa)
             ->addIndexColumn()
-            ->editColumn('jenis_kelamin', function($data) {
+            ->editColumn('jenis_kelamin', function ($data) {
                 return $data->jenis_kelamin == 1 ? "<span class='badge badge-success'>Laki-Laki</span>" : "<span class='badge badge-danger'>Perempuan</span>";
             })
-            ->editColumn('kode', function($data) {
+            ->editColumn('kode', function ($data) {
                 return $data->kode ? $data->kode : "<span class='badge badge-danger'>No rfid yet</span>";
             })
-            ->addColumn('jurusan', function($data) {
+            ->addColumn('jurusan', function ($data) {
                 return $data->jurusan ? $data->jurusan->nama : 'N/A';
             })
-            ->addColumn('tingkat', function($data) {
+            ->addColumn('tingkat', function ($data) {
                 return $data->tingkat ? $data->tingkat->nama : 'N/A';
             })
-            ->addColumn('action', function($data){
-                return '<a href="'.route('siswa.show', $data->id).'" class="btn btn-info btn-sm m-1"><i class="fas fa-th"></i> </a>
-                        <a href="'.route('siswa.edit', $data->id).'" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> </a>
-                        <button onclick="deleteConfirm(\''.$data->id.'\')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                        <form method="POST" action="'.route('siswa.destroy', $data->id).'" style="display:inline-block;" id="submit_'.$data->id.'">
-                            '.method_field('delete').csrf_field().'
+            ->addColumn('action', function ($data) {
+                return '<a href="' . route('siswa.show', $data->id) . '" class="btn btn-info btn-sm m-1"><i class="fas fa-th"></i> </a>
+                        <a href="' . route('siswa.edit', $data->id) . '" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> </a>
+                        <button onclick="deleteConfirm(\'' . $data->id . '\')" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                        <form method="POST" action="' . route('siswa.destroy', $data->id) . '" style="display:inline-block;" id="submit_' . $data->id . '">
+                            ' . method_field('delete') . csrf_field() . '
                         </form>';
             })
-            ->rawColumns(['action','jenis_kelamin', 'kode'])
+            ->rawColumns(['action', 'jenis_kelamin', 'kode'])
             ->make(true);
     }
 }

@@ -39,7 +39,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Kartu</label>
                                     <div class="col-sm-10">
-                                        <select name="kode" class="form-control @error('kode') is-invalid @enderror"">
+                                        <select name="kode" class="form-control @error('kode') is-invalid @enderror">
                                             <option value="">[ Pilih Kartu ]</option>
                                             @foreach($kartus as $kartu)
                                                 <option value="{{ $kartu->kode }}" @selected(old('kode') == $kartu->kode)>{{ $kartu->kode }}</option>
@@ -48,7 +48,7 @@
                                         @error('kode')
                                             <span class="error invalid-feedback">{{ $message }}</span>
                                         @enderror
-                                  </div>
+                                    </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Nama</label>

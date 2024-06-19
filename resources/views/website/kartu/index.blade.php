@@ -66,9 +66,9 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#datatable').DataTable({
+        var table = $('#datatable').DataTable({
             responsive : true,
-            processing : true,
+            processing : false,
             serverSide : true,
             ajax : {
                 url : '{!! route('kartus.ajax.datatable') !!}',
@@ -79,6 +79,9 @@
                 {data: 'action', name: 'action', orderable: false, searchable: false}
             ]
         });
+        setInterval(function(){
+            table.ajax.reload(null, false); // User paging is not reset on reload
+        }, 1000); // 30000 milliseconds = 30 seconds
     });
 
     function deleteConfirm(id) {
