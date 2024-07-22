@@ -13,6 +13,7 @@ use App\Http\Controllers\TingkatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengaturanController;
 use App\Http\Controllers\Api\ChangeController;
+use App\Http\Controllers\TestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,8 @@ use App\Http\Controllers\Api\ChangeController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/test', [TestController::class, 'index']);
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/',DashboardController::class)->name('home');
