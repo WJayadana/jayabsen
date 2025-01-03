@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Siswa;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,8 +13,17 @@ class Tingkat extends Model
     use HasFactory, HasUuids, SoftDeletes;
 
     protected $fillable = [
-        'id',
         'nama',
-        'is_active'
+        'is_active',
+        'isUse',
     ];
+
+    protected $casts = [
+        'isUse' => 'boolean', // Cast ke boolean untuk mempermudah manipulasi
+    ];
+
+    public function siswas()
+    {
+        return $this->hasMany(Siswa::class, 'id_tingkat');
+    }
 }

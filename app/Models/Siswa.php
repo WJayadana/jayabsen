@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Jurusan;
+use App\Models\Tingkat;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +14,6 @@ class Siswa extends Model
     use HasFactory, HasUuids, SoftDeletes;
 
     protected $fillable = [
-        'id',
         'id_jurusan',
         'id_tingkat',
         'kode',
@@ -23,4 +24,14 @@ class Siswa extends Model
         'nomor',
         'start_date',
     ];
+
+    public function jurusan()
+    {
+        return $this->belongsTo(Jurusan::class, 'id_jurusan');
+    }
+
+    public function tingkat()
+    {
+        return $this->belongsTo(Tingkat::class, 'id_tingkat');
+    }
 }

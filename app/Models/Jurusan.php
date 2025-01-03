@@ -14,7 +14,12 @@ class Jurusan extends Model
 
     protected $fillable = [
         'id',
-        'name',
-        'is_active'
+        'nama',
+        'is_active',
+        'isUse', // Tambahkan kolom ini
+    ];
+
+    protected $casts = [
+        'isUse' => 'boolean', // Cast ke boolean
     ];
 }
