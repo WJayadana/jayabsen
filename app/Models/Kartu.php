@@ -12,6 +12,6 @@ class Kartu extends Model
 
     protected $fillable = [
         'id',
-        'name',
+        'kode',
     ];
 }
