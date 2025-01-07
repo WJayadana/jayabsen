@@ -19,4 +19,16 @@ class Absensi extends Model
         'jam_keluar',
         'status',
     ];
+
+    public function siswa()
+    {
+        return $this->belongsTo(Siswa::class, 'id_siswa');
+    }
+
+    public function device()
+    {
+        return $this->belongsTo(Device::class, 'id_device');
+    }
+
+
 }

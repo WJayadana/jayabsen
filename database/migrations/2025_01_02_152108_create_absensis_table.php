@@ -19,11 +19,15 @@ return new class extends Migration
             $table->date('tanggal');
             $table->time('jam_masuk')->nullable();
             $table->time('jam_keluar')->nullable();
-            $table->string('status'); // present, absent, alpha
+            $table->enum('status', ['present', 'absent', 'alpha', 'izin', 'sakit']);
 
             $table->foreign('id_siswa')->references('id')->on('siswas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_device')->references('id')->on('devices')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->unique(['id_siswa', 'tanggal']);
+            $table->index(['tanggal', 'id_siswa']);
         });
+
     }
 
     /**
