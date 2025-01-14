@@ -49,7 +49,7 @@ class AbsensiController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 200,
-                "message" => "Kartu successfully deleted"], 404);
+                "message" => "Kartu dihapus"], 404);
         }
 
         return response()->json($absensi, 200);
@@ -63,11 +63,11 @@ class AbsensiController extends Controller
         $absensi = Absensi::find($id);
 
         if (!$absensi) {
-            return response()->json(['message' => 'Absensi not found'], 404);
+            return response()->json(['message' => 'Absensi tidak ditemukan'], 404);
         }
 
         $absensi->delete();
 
-        return response()->json(['message' => 'Absensi deleted'], 200);
+        return response()->json(['message' => 'Absensi dihapus'], 200);
     }
 }

@@ -47,7 +47,7 @@ class SettingController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Setting not found"]
+                "jdata" => ["message" => "Setting tidak ditemukan"]
             ], 404);
         }
 
@@ -67,7 +67,7 @@ class SettingController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Setting not found"]
+                "jdata" => ["message" => "Setting tidak ditemukan"]
             ], 404);
         }
 
@@ -95,7 +95,7 @@ class SettingController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Setting not found"]
+                "jdata" => ["message" => "Setting tidak ditemukan"]
             ], 404);
         }
 
@@ -104,7 +104,7 @@ class SettingController extends Controller
         return response()->json([
             "author" => "Jayadana",
             "status" => 200,
-            "jdata" => ["message" => "Setting successfully deleted"]
+            "jdata" => ["message" => "Setting dihapus"]
         ]);
     }
     // Re-generate secret_key
@@ -116,7 +116,7 @@ class SettingController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Setting not found"]
+                "jdata" => ["message" => "Setting tidak ditemukan"]
             ], 404);
         }
 

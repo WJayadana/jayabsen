@@ -45,7 +45,7 @@ class DeviceController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Device not found"]
+                "jdata" => ["message" => "Device tidak ditemukan"]
             ], 404);
         }
 
@@ -65,7 +65,7 @@ class DeviceController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Device not found"]
+                "jdata" => ["message" => "Device tidak ditemukan"]
             ], 404);
         }
 
@@ -93,7 +93,7 @@ class DeviceController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Device not found"]
+                "jdata" => ["message" => "Device tidak ditemukan"]
             ], 404);
         }
 
@@ -103,7 +103,7 @@ class DeviceController extends Controller
         return response()->json([
             "author" => "Jayadana",
             "status" => 200,
-            "jdata" => ["message" => "Device successfully deleted"]
+            "jdata" => ["message" => "Device sdihapus"]
         ]);
     }
 }

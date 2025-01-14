@@ -65,7 +65,7 @@ class SiswaController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Siswa not found"],
+                "jdata" => ["message" => "Siswa tidak ditemukan"],
             ], 404);
         }
 

@@ -27,7 +27,7 @@ class JurusanController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Jurusan not found"],
+                "jdata" => ["message" => "Jurusan tidak ditemukan"],
             ], 404);
         }
 
@@ -64,7 +64,7 @@ class JurusanController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Jurusan not found"],
+                "jdata" => ["message" => "Jurusan tidak ditemukan"],
             ], 404);
         }
 
@@ -91,7 +91,7 @@ class JurusanController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Jurusan not found"],
+                "jdata" => ["message" => "Jurusan tidak ditemukan"],
             ], 404);
         }
 
@@ -100,7 +100,7 @@ class JurusanController extends Controller
         return response()->json([
             "author" => "Jayadana",
             "status" => 200,
-            "jdata" => ["message" => "Jurusan deleted"],
+            "jdata" => ["message" => "Jurusan dihapus"],
         ], 200);
     }
 }

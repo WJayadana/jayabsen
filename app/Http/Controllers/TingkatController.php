@@ -27,7 +27,7 @@ class TingkatController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Tingkat not found"],
+                "jdata" => ["message" => "Tingkat tidak ditemukan"],
             ], 404);
         }
 
@@ -64,7 +64,7 @@ class TingkatController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Tingkat not found"],
+                "jdata" => ["message" => "Tingkat tidak ditemukan"],
             ], 404);
         }
 
@@ -91,7 +91,7 @@ class TingkatController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Tingkat not found"],
+                "jdata" => ["message" => "Tingkat tidak ditemukan"],
             ], 404);
         }
 
@@ -100,7 +100,7 @@ class TingkatController extends Controller
         return response()->json([
             "author" => "Jayadana",
             "status" => 200,
-            "jdata" => ["message" => "Tingkat deleted"],
+            "jdata" => ["message" => "Tingkat dihapus"],
         ], 200);
     }
 }

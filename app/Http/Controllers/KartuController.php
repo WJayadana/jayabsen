@@ -50,7 +50,7 @@ class KartuController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Kartu not found"]
+                "jdata" => ["message" => "Kartu tidak ditemukan"]
             ], 404);
         }
 
@@ -70,7 +70,7 @@ class KartuController extends Controller
             return response()->json([
                 "author" => "Jayadana",
                 "status" => 404,
-                "jdata" => ["message" => "Kartu not found"]
+                "jdata" => ["message" => "Kartu tidak ditemukan"]
             ], 404);
         }
 
@@ -79,7 +79,7 @@ class KartuController extends Controller
         return response()->json([
             "author" => "Jayadana",
             "status" => 200,
-            "jdata" => ["message" => "Kartu successfully deleted"]
+            "jdata" => ["message" => "Kartu dihapus"]
         ]);
     }
 }
