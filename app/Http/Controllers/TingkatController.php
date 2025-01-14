@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class TingkatController extends Controller
 {
+
     public function index()
     {
         $tingkat = Tingkat::all();
